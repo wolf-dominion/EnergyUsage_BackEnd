@@ -25,9 +25,10 @@ class FavoritemapsController < ApplicationController
     #     render json: @fm
     # end
     
-    #   def destroy
-    #     @fm.destroy
-    #   end
+    def destroy
+        @fm = Favoritemap.find(params[:id])
+        @fm.destroy
+    end
 
     private
 
