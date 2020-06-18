@@ -4,7 +4,9 @@ class FavoritemapsController < ApplicationController
     # before_action :set_fm, only: [update, :destroy]
     
     def index
-        @fms = Favoritemap.all
+        # @fms = Favoritemap.all
+        # render json: @fms
+        @fms = Favoritemap.where(user_id: @user_id)
         render json: @fms
     end
 
@@ -34,7 +36,7 @@ class FavoritemapsController < ApplicationController
       end
 
     def fm_params
-        params.require(:favoritemap).permit(:zip, :api_id).merge(user_id: @user_id)
+        params.require(:favoritemap).permit(:zip, :avg, :min, :max, :energyInfo).merge(user_id: @user_id)
     end
 
 end
