@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        render json: @user, include: [:favoritemaps]
+        render json: @user, include: [:results]
     end
 
     def create
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         if @user.save
             token = createToken(@user)
             render json: {
-                message: "Success user #{@user.username} has been created",
+                success_message: "Success user #{@user.username} has been created",
                 token: token
             }
         else
