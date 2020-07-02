@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :favoritemaps
-  resources :users, only: [:index, :show, :create] do
+  resources :users, only: [:index, :show, :create, :delete] do
     resources :favoritemaps
   end
 
